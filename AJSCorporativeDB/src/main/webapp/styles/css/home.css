@@ -1,0 +1,64 @@
+/******/
+/*MENU*/
+/******/
+ul.list {
+	list-style-type: none;
+}
+
+.panel {
+	box-shadow:0 0 10px #000;
+	background-color: #f5f5f5;
+	padding: 10px;
+	margin-top: 10px;
+}
+
+.page-header {
+	margin: 10px;
+	color: #000;
+	font-weight: bold;
+}
+
+.gold {
+	color: gold;
+}
+
+.generate-but {
+	text-shadow: 0 0 1px #555;
+}
+
+.pdf{
+	color: #d9534f;
+}
+
+.word{
+	color: #428bca;
+}
+
+.excel{
+	color: #5cb85c;
+}
+
+#AllUser .modal-content {
+	background-color: Beige;
+}
+
+.mheader {
+	border-bottom: 1px solid #555;
+}
+
+.mtitle {
+	color: white !important;
+}
+
+.textfields {
+	width: 100%;
+}
+
+#modaltable th{
+	width: 15%;
+	border-top: 0;
+}
+#modaltable td{
+	width: 85%;
+	border-top: 0;
+}

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:tx="http://www.springframework.org/schema/tx"
+ xmlns:websocket="http://www.springframework.org/schema/websocket"
+ xmlns:p="http://www.springframework.org/schema/p"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:mvc="http://www.springframework.org/schema/mvc"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+ http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+ http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd">
+ 
+ 
+ <import resource="classpath:dataSource.xml"/>
+ 
+ <mvc:annotation-driven/>
+ 
+ <context:component-scan base-package="com.indra.api"/>
+  <mvc:resources mapping="/**" location="/"/>
+  
+  <bean id="AuthMethod" class="com.indra.api.security.AuthMethod" />
+  
+  	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <property name="maxUploadSize" value="50000000"/>
+	</bean>
+  
+  <bean class="org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator">
+        <property name="proxyTargetClass" value="true"/>
+    </bean>
+
+	<tx:annotation-driven />  
+  
+  <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <property name="mediaTypes">
+            <map>
+                <entry key="file" value="multipart/form-data"/>
+                <entry key="html" value="text/html"/>
+            </map>
+        </property>
+    </bean>
+    
+    <websocket:message-broker application-destination-prefix="/app">
+        <websocket:stomp-endpoint path="/ws">
+            <websocket:sockjs/>
+        </websocket:stomp-endpoint>
+        <websocket:simple-broker prefix="/topic, /queue"/>
+    </websocket:message-broker>
+   
+   <bean id="messageSource"        
+	class="org.springframework.context.support.ReloadableResourceBundleMessageSource">        
+	<property name="basename" value="classpath:message" />        
+	<property name="defaultEncoding" value="UTF-8" />    
+ </bean>
+  
+</beans>

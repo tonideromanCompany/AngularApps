@@ -1,0 +1,80 @@
+<link rel="stylesheet" href="styles/css/home.css">
+<section>
+<div ng-controller="HomeController as vm">
+<nav class="navbar navbar-fixed-top navbar-inverse">
+    <div class="navbar-header">
+    	<a class="navbar-brand" href="http://www.angularjs.org" target="_blank">
+    		<img src="images/angular-js.png" style="width:50px;height:50px;margin-top:-20px !important;margin-bottom:-15px;margin-left:-30px;"/>
+    	</a>
+        <a href="/" class="navbar-brand" style="margin-left:-50px;"><span class="brand-title">CorporativeDB</span></a>
+        <a class="btn navbar-btn navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+    </div>
+    <div class="navbar-collapse collapse">
+        <div class="pull-right navbar-logo">
+            <ul class="nav navbar-nav pull-right">
+            <li><a><i class="fa fa-star gold"></i> Admin Mode: {{vm.currentuser.name}}</a></li>
+            <li><a><i class="fa fa-home"></i> Home</a></li>
+            	<li class="dropdown" style="margin-right:50px;">
+          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Language<span class="caret"></span></a>
+          		<ul class="dropdown-menu">
+          			<li><a href="">{{vm.language.english}}</a></li>
+           			<li><a href="">{{vm.language.spanish}}</a></li>
+            		<li><a href="">{{vm.language.french}}</a></li>
+            	</ul>
+           		 </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+	<div class="page-header"><h1>API Report Generator</h1></div>
+	<div class="jumbotron panel">
+  		<h3><a data-toggle="collapse" data-target="#Menu" aria-expanded="false" aria-controls="Menu">Menu <i class="fa fa-chevron-up"></i></a></h3>
+		<div class="collapse out" id="Menu">
+				<p><i class="fa fa-info-circle"></i> All users report  
+  					<a ng-click="vm.generateUsers(1, 1)"><i class="fa fa-file-pdf-o generate-but pdf"></i></a>
+  					<a ng-click="vm.generateUsers(2, 1)"><i class="fa fa-file-excel-o generate-but excel"></i></a>
+  					<a ng-click="vm.generateUsers(3, 1)"><i class="fa fa-file-word-o generate-but word"></i></a></p>
+  				<p><i class="fa fa-info-circle"></i> Single complete user report 
+  					<a ng-click="vm.generateUsers(1, 2)"><i class="fa fa-file-pdf-o generate-but pdf"></i></a>
+  					<a ng-click="vm.generateUsers(2, 2)"><i class="fa fa-file-excel-o generate-but excel"></i></a>
+  					<a ng-click="vm.generateUsers(3, 2)"><i class="fa fa-file-word-o generate-but word"></i></a></p>
+		</div>
+	</div>
+<!-- MODALS -->
+<div class="modal fade" id="AllUsers">
+  <div class="modal-dialog">
+    <div class="modal-content" id="modalcontent">
+      <div class="modal-header mheader" style="background-color:{{vm.type.header}}">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title mtitle">Generate {{vm.type.title}} report</h4>
+      </div>
+      <form ng-submit="vm.report()">
+      <div class="modal-body">
+      <table id="modaltable" class="table table-condensed">
+      <tr><th><label>File name:</label></th>
+      <td><input type="text" id="FileName" style="{{vm.fail}}" class="form-control textfield" ng-model="vm.filename"/><small> .pdf</small></td></tr>
+      <tr id="input2"><th><label>User email:</label></th>
+      <td><input type="text" id="UserMail" style="{{vm.fail}}" class="form-control textfield" ng-model="vm.usermail"/></td></tr>
+      </table>
+      </div>
+      <div class="modal-footer" style="border-top:0">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.close()">Close</button>
+        <button type="submit" class="btn {{vm.type.classtype}}" ng-click="vm.clean()"><i class="{{vm.type.button}}"></i></button>
+      </div>
+      </form>
+    </div><!-- /.modal-content -->
+    <div id="modalcontent2" class="modal-content" style="{{vm.finnish}}">
+    <h1 style='color:white'><i class='fa fa-check fa-lg pull-left'></i> PDF generated succesfully!</h1>
+    </div>
+    <div id="modalcontent3" class="modal-content" style="{{vm.finnish}}">
+    <h1 style='color:white'><i class='fa fa-close fa-lg pull-left'></i> Can't generate PDF!</h1>
+    </div>
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+</div> <!-- End controller -->
+</section>

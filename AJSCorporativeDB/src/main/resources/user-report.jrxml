@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0166b870-5355-4fc4-abe0-fe56ebdfaa0d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="bd607052-5188-49f2-b968-41cdebaa330a"/>
+	<subDataset name="dataset1" uuid="e5619fe4-9a77-47a2-980b-a5468f4b497f"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="surname" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="password" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="110" height="40" uuid="a85d2008-36f6-4980-afeb-39414ea83cea"/>
+				<imageExpression><![CDATA["C:\\Users\\arommartinez\\workspace2\\AJSCorporativeDB\\src\\main\\webapp\\images\\logo-indra.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="110" y="40" width="351" height="39" uuid="479bdae7-b972-4fa8-8664-d917dfa54f0c"/>
+				<textElement>
+					<font fontName="Arial Black" size="24" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[CorporativeDB PDF Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="134" height="35" uuid="9d197491-847b-4ace-a0d7-48125f32b685"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[User]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="41" width="100" height="20" uuid="ef5a5380-f657-4d3b-a8e0-f25f6fac5748">
+					<property name="net.sf.jasperreports.export.pdf.tag.table" value="full"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial Black" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="41" width="100" height="20" uuid="e5801d0a-ec79-44b9-b471-0d2122cee7b0"/>
+				<textElement>
+					<font fontName="Arial Black"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="41" width="155" height="20" uuid="5ff86c62-261f-4663-ab57-0e896ec4453e"/>
+				<textElement>
+					<font fontName="Arial Black"/>
+				</textElement>
+				<text><![CDATA[Surname]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="355" y="41" width="100" height="20" uuid="39b51aaf-2a5a-4ebf-8d4d-858124e936f7"/>
+				<textElement>
+					<font fontName="Arial Black"/>
+				</textElement>
+				<text><![CDATA[Email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="41" width="100" height="20" uuid="53cd864c-d0dd-4716-83ad-c67901a5b1a9"/>
+				<textElement>
+					<font fontName="Arial Black"/>
+				</textElement>
+				<text><![CDATA[Password]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="41" width="555" height="1" uuid="e80d0c05-c613-4843-b379-7f18aed5a24c"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="2272c11c-37d7-4eeb-9d31-f76e59092a82"/>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="155" height="20" uuid="ab868b5b-683c-455c-9741-9510fe23ebf0"/>
+				<textFieldExpression><![CDATA[$F{surname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="355" y="0" width="100" height="20" uuid="d4d9033e-f287-4515-bbbb-153c26702e83"/>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="20" uuid="6db8cff4-b68a-44a6-8669-a681bb53418a"/>
+				<textFieldExpression><![CDATA[$F{password}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="20" width="555" height="1" uuid="9b28ac77-bfc0-4f5f-9dda-7b9c45db78da"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="b0fed384-144d-4acb-8b0b-792c227f2ed9"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="355" y="22" width="100" height="20" uuid="50795c76-ee57-4514-b0b4-bcc09db5aaf6"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement x="455" y="22" width="100" height="20" uuid="aae97940-5986-4f62-be8a-1f69cd15c494"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="321" y="22" width="34" height="20" uuid="ffd85501-5604-4151-9fa7-b8bf9d599fb2"/>
+				<text><![CDATA[Lleida,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="22" width="134" height="20" uuid="a02dc525-73e1-4eec-856f-61d60eb550a6"/>
+				<text><![CDATA[V0.1 Copyright. Indra 2015]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

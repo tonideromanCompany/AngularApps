@@ -1,0 +1,230 @@
+<link rel="stylesheet" href="styles/css/dashboard.css">
+
+<section id="dashboard-view" class="mainbar">
+    <section class="matter">
+     <div id="wrapper">
+
+        <!-- Sidebar -->
+        <button id="sidebar-toggle" class="but fa fa-plus"></button>
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand" style="background-color:#555; border-bottom: 1px solid Beige;">
+                <i class="fa fa-cube"></i>
+                    <strong>
+                        My Widgets
+                    </strong>
+                </li>
+                   	<li><table style="margin-top: 20px !important;"><tr>
+                    	<td><i class="fa fa-bar-chart widgetMenuSize"></i></td>
+                    	<td><i class="fa fa-users widgetMenuSize"></i></td>
+                    	<td><i class="fa fa-calendar widgetMenuSize"></i></td>
+                    	</tr></table>
+                    	</li>
+                        <li><table style="margin-top: 10px !important;"><tr>
+                    	<td><i class="fa fa-plus widgetMenuSize"></i></td>
+                    	<td><i class="fa fa-envelope widgetMenuSize"></i></td>
+                    	<td><i class="fa fa-comment widgetMenuSize"></i></td>
+                    	</tr></table>
+                    	</li>
+                    	<li><table style="margin-top: 10px !important;"><tr>
+                    	<td><i class="fa fa-star widgetMenuSize"></i></td>
+                    	<td><i class="fa fa-file widgetMenuSize"></i></td>
+                    	<td><i class="fa fa-bell widgetMenuSize"></i></td>
+                    	</tr></table>
+                    	</li>
+            </ul>
+        </div>	
+                             <a id="ChatMinimized" ng-Dblclick="vm.maximize()">{{vm.openchats[0].minimizeduser}}</a>
+                             <div class="widget" id="OpenChat" style="border: 2px solid #eee; box-shadow: 0 0 5px #000;">
+                             <div class="widget-head whead" ng-click="vm.minimize()">
+						     <div class="page-title text-center" style="color:#555 !important;"><strong class="stroke" ng-show="vm.openchats[0].notifications">({{vm.openchats[0].notifications}})</strong><a style="color:beige !important;font-weight:bold;"> {{vm.openchats[0].user}} </a>
+						     <i class="fa fa-user" style="color:{{vm.state}}"></i></div>
+						     <div class="clearfix"></div>
+						     </div>
+                             <div id="chat">
+                        <div id="scrollwindow" class="widget-content text-center text-info">
+				<table class="table-condensed table-hover">
+				<tr ng-repeat="m in vm.messagechatsshow">
+				<td class="chatwindow"><div class="{{m.classtype}}">{{m.message}}</div></td>				
+				</tr>
+				</table>
+                        </div>
+                        <div id="fields">
+                        <form ng-submit="vm.addMessage()">
+                            <input style="width: 170px !important;margin-right: 10px;" type="text" class="form-control" ng-model="vm.newmessage.body"/><button type="submit">Send</button>
+                            </form>
+                        </div>
+                           <div class="widget-foot wfoot">
+                            <div class="clearfix">
+                            <a class="closebut fa fa-square-o" ng-click="vm.close()"></a>
+                            </div>
+                    </div>
+                    </div>
+                    </div>
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul id="sortable" class="today-datas">
+                    	<li id="widget1" class="widgets ui-state-default widgetBox">
+                    	<div class="pull-right"><span id="close" class="notification" ng-click="vm.deleteicon(1)">1</span></div>
+                    	<i class="fa fa-bar-chart widgetSize"></i>
+                    	<br><strong>Projects Working</strong>
+                    	<div class="clearfix"></div>
+                    	</li>
+                    	 <li id="widget2" class="widgets ui-state-default widgetBox">
+                    	<div class="pull-right"><span id="close" class="notification" ng-click="vm.deleteicon(2)">{{vm.currentevents.length}}</span></div>
+                    	<i class="fa fa-calendar widgetSize"></i>
+                    	<br><a ng-click="vm.showEventsBox()"><strong>{{vm.currentday}} - {{vm.currentmonth}} Events</strong></a>
+                    	<div class="clearfix"></div>
+                    	</li>
+						<li id="widget3" class="widgets ui-state-default widgetBox">
+                    	<div class="pull-right"><span id="close" class="notification" ng-click="vm.deleteicon(3)">5</span></div>
+                    	<i class="fa fa-plus widgetSize"></i>
+                    	<br><a ng-click="vm.showRequestsBox()"><strong>Requests</strong></a>
+                    	<div class="clearfix"></div>
+                    	</li>
+                    	<li id="widget4" class="widgets ui-state-default widgetBox">
+                    	<div class="pull-right"><span id="close" class="notification" ng-click="vm.deleteicon(4)">{{vm.messages.length}}</span></div>
+                    	<i class="fa fa-envelope widgetSize"></i>
+                    	<br><a ng-click="vm.showMessagesBox()"><strong>Messages</strong></a>
+                    	<div class="clearfix"></div>
+                    	</li>
+                    	<li id="widget5" class="widgets ui-state-default widgetBox">
+                    	<div class="pull-right"><span id="close" class="notification" ng-click="vm.deleteicon(5)">{{vm.openchats.length}}</span></div>
+                    	<i class="fa fa-comment widgetSize"></i>
+                    	<br><strong>Chats</strong>
+                    	<div class="clearfix"></div>
+                    	</li>
+                    	<li id="widget6" class="widgets ui-state-default widgetBox">
+                    	<div class="pull-right"><span id="close" class="notification" ng-click="vm.deleteicon(6)">{{vm.favorites.length}}</span></div>
+                    	<i class="fa fa-star widgetSize"></i>
+                    	<br><a ng-click="vm.showFavoritesBox()"><strong>Favorites</strong></a>
+                    	<div class="clearfix"></div>
+                    	</li>
+                        </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                <div class="widget" id="RequestsBox" style="display:none">
+                        <div ht-widget-header icon="fa fa-plus" title="Requests"
+                             allow-collapse="true" collapseid="requests"></div>
+                             <div id="requests" class="collapse in">
+                        <div class="widget-content text-center text-info">
+                        <table class="table table-condensed table-striped" style="text-align:left !important;margin:0px !important; padding:0px !important;">
+                           <tr><th><i style="color:red;text-shadow:0 0 2px #000" class="fa fa-users"></i> Add a contact:</th></tr>
+                           <tr><td><select class="js-example-basic-multiple" style="width:100%" multiple="multiple">
+  						     <option>Search users</option>
+						   </select></td></tr>
+						   <tr><th><i style="color:red;text-shadow:0 0 2px #000" class="fa fa-user"></i> Your requests</th></tr>
+						 </table>
+                         </div>
+                        <div class="widget-foot">
+                            <div class="clearfix">*Write in the select box to search users to add to your contacts</div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="widget" id="FavoritesBox" style="display:block">
+                        <div ht-widget-header icon="fa fa-star" title="Favorite Contacts"
+                             allow-collapse="true" collapseid="favorites"></div>
+                             <div id="favorites" class="collapse in">
+                        <div class="widget-content text-center text-info">
+                            <table class="table table-condensed table-hover" style="text-align:left !important;margin:0px !important; padding:0px !important;">
+                                <tbody>
+                                <thead>
+                                <div class="pull-right">You can add <strong>{{8-vm.favorites.length}}</strong> more favorites</div>
+                                </thead>
+                                    <tr class="repeat-item" ng-repeat="p in vm.favorites" ng-mouseenter="vm.hover(p)" ng-mouseleave="vm.hover(p)">
+                                    	<td><img ng-src="profile/user/{{p.id}}/image/{{p.image}}" class="image"/>
+                                        <strong> {{p.name}} {{p.surname}}</strong> <i>({{p.email}})</i></td>
+                                        <td><div ng-show="p.showOptions">
+                                        <i class="fa fa-envelope icons" style="color:DodgerBlue;" ng-click="vm.writeamessage(p)"></i>&nbsp
+                                        <i class="fa fa-comment icons" style="color:gold;" ng-click="vm.OpenChatFavorite(p)"></i>&nbsp
+                                        <i class="fa fa-close icons" style="color:red;" ng-click="vm.deleteFavorite(p)"></i>
+                                        </div></td>
+                                   </tr>
+                                </tbody>
+                            </table>
+                            </div>
+                        <div class="widget-foot">
+                            <div class="clearfix">*Focus on it to show more</div>
+                        </div>
+                        </div>
+                    </div>
+                       <div id="write-message-widget" class="widget" style="display:none">
+                        <div ht-widget-header icon="fa fa-pencil" title="Write a message to {{vm.messagetouser}}"
+                             allow-collapse="true" collapseid="write-message"></div>
+                             <div id="write-message" class="collapse in">
+                        <div class="widget-content text-center text-info">
+                        <form name="Msgform" ng-submit="vm.Msgform()">
+                        	<fieldset class="form-group">
+                        	<textarea id="mssbody" name="body" class="form-control txtareaform" ng-model="vm.messagetxtarea" style="min-width:100%;"></textarea>
+							</fieldset>
+							<button style="margin-top:20px !important" type="submit" class="btn btn-default" ng-click="vm.submitmssform()">SEND</button>
+                            </form>
+                            </div>
+                        <div class="widget-foot">
+                        <div id="Show-mss-switch" class="onoffswitch">
+						    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" value="1">
+						    <label id="onoffswitch-label" class="onoffswitch-label" for="myonoffswitch">
+						        <span class="onoffswitch-inner"></span>
+						        <span class="onoffswitch-switch"></span>
+						    </label>
+						</div>
+                            <div class="switch" style="display:none">
+  							<input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" />
+  							<label class="mylabel" for="cmn-toggle-1"></label>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                <div class="widget" id="EventsBox" style="display:block">
+                        <div ht-widget-header icon="fa fa-calendar" title="Events {{vm.currentday}} - {{vm.currentmonth}}"
+                             allow-collapse="true" collapseid="events"></div>
+                        <div id="events" class="collapse in widget-content text-center text-info">
+				<table class="table table-condensed table-striped" ng-repeat="e in vm.currentevents">
+				<tr><th><i class="fa fa-arrow-right" style="color:red;text-shadow:0 0 1px #000"></i> <small style="font-style:Italic !important;">{{e.start}}-{{e.end}}</small> {{e.title}}</th></tr><tr><td>{{e.description}}</td></tr>
+				</table>
+                        </div>
+                    </div>
+                       <div class="widget" id="MessagesBox" style="display:block">
+                        <div ht-widget-header icon="fa fa-envelope" title="Messages" notification="{{vm.messages.length}}"
+                             allow-collapse="true" collapseid="Messages"></div>
+                             <div id="Messages" class="collapse in">
+                        <div  class="widget-content text-center text-info">
+				<table class="table-condensed" ng-repeat="m in vm.showmessages">
+				<tr>
+				<td><strong>@{{m.userfrom}}</strong> {{m.body}}.</br>
+				<small class="pull-right" style="font-size: 10px !important; color: #555 !important;"><i class="fa fa-clock-o"></i> {{m.time | date:'yyyy-MM-dd HH:mm:ss'}}</small></td>				
+				</tr>
+				</table>
+                        </div>
+                           <div class="widget-foot text-center">
+                            <div class="clearfix"><strong><a style="float:center !important;" ng-click="vm.ShowMessages()"><i class="fa fa-angle-double-down"></i> Show more <i class="fa fa-angle-double-down"></i></a></strong></div>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+</section>
+
+<div id="selected-contact" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content style-content">
+      <div class="modal-header style-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title style-title">Name of contact</h4>
+      </div>
+      <div class="modal-body">
+        {{vm.selectedEvent}}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<section class="content login-back" >
+<div ng-controller="LoginController as vm">
+	<nav class="navbar navbar-fixed-top navbar-inverse">
+    <div class="navbar-header">
+    	<a class="navbar-brand" href="http://www.angularjs.org" target="_blank">
+    		<img src="images/angular-js.png" style="width:50px;height:50px;margin-top:-20px !important;margin-bottom:-15px;margin-left:-30px;"/>
+    	</a>
+        <a href="/" class="navbar-brand" style="margin-left:-50px;"><span class="brand-title">CorporativeDB</span></a>
+        <a class="btn navbar-btn navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+    </div>
+    <div class="navbar-collapse collapse">
+        <div class="pull-right navbar-logo">
+            <ul class="nav navbar-nav pull-right">
+            	<li class="dropdown" style="margin-right:50px;">
+          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Language<span class="caret"></span></a>
+          		<ul class="dropdown-menu">
+          			<li><a href="">{{vm.language.english}}</a></li>
+           			<li><a href="">{{vm.language.spanish}}</a></li>
+            		<li><a href="">{{vm.language.french}}</a></li>
+            	</ul>
+           		 </li>
+            </ul>
+        </div>
+    </div>
+</nav> 
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+	<form name="login" ng-submit="vm.login()">
+		<div id="login" class="panel panel-default">
+			<div id="login-header" class="panel-heading" aria-describedby="user-addon">Login</div>
+			<div id="form1" class="input-group" style="margin-top:8%">
+			<span class="input-group-addon" id="user-addon"><i class="fa fa-user"></i></span>
+			<input type="text" class="form-control type" ng-model="vm.user" />
+			</div>
+			<div id="form2" class="input-group" style="margin-top: 3%;">
+			<span class="input-group-addon" id="password-addon"><i class="fa fa-lock"></i></span>
+			<input type="password" class="form-control type" aria-describedby="password-addon" ng-model="vm.password"/>
+			</div>
+			<button id="log" class="btn btn-default" type="submit">Send</button>
+			<div style="float:left-bottom; margin-left: 20px;"> New here? <a ng-click="vm.signup()" style="color:DodgerBlue;">Sign Up</a></div>
+		</div>
+	</form>
+			<div id="alert">
+			<div class='alert alert-danger fade in'>
+				<a href='#' class='close' data-dismiss='alert'>&times;</a>
+    			<strong>Error!</strong> Incorrect user or password
+    			</div>
+			</div>
+	</div>
+	</div>
+</section>

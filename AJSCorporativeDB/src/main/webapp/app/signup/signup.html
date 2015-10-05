@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="styles/css/signup.css">
+<section class="content" >
+<div ng-controller="SignupController as vm">
+	<nav class="navbar navbar-fixed-top navbar-inverse">
+    <div class="navbar-header">
+    	<a class="navbar-brand" href="http://www.angularjs.org" target="_blank">
+    		<img src="images/angular-js.png" style="width:50px;height:50px;margin-top:-20px !important;margin-bottom:-15px;margin-left:-30px;"/>
+    	</a>
+        <a href="/" class="navbar-brand" style="margin-left:-50px;"><span class="brand-title">CorporativeDB</span></a>
+        <a class="btn navbar-btn navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+    </div>
+    <div class="navbar-collapse collapse">
+        <div class="pull-right navbar-logo">
+            <ul class="nav navbar-nav pull-right">
+            	<li class="dropdown" style="margin-right:50px;">
+          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Language<span class="caret"></span></a>
+          		<ul class="dropdown-menu">
+          			<li><a href="">{{vm.language.english}}</a></li>
+           			<li><a href="">{{vm.language.spanish}}</a></li>
+            		<li><a href="">{{vm.language.french}}</a></li>
+            	</ul>
+           		 </li>
+            </ul>
+        </div>
+    </div>
+</nav> 
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+		<div class="panel panel-default signup-panel">
+		<div class="panel-heading signup-header">SIGN UP</div>
+				<form name="signup-form" ng-submit="vm.signup()">
+					<input id="Name" type="text" class="form-control txt-input" placeholder="Name" ng-model="vm.formName" style="border: 2px solid {{vm.result1}} !important;" />
+					<input id="Surname" type="text" class="form-control txt-input" placeholder="Surname" ng-model="vm.formSurname" style="border: 2px solid {{vm.result2}} !important;" />
+					<input id="Email" type="text" class="form-control txt-input" placeholder="Email" ng-model="vm.formEmail" style="border: 2px solid {{vm.result3}} !important;" />
+					<input id="Pass" type="password" class="form-control txt-input" placeholder="Password" ng-model="vm.formPass" style="border: 2px solid {{vm.result4}} !important;" />
+					<input id="Pass2" type="password" class="form-control txt-input" placeholder="Repeat your password" ng-model="vm.formPass2" style="border: 2px solid {{vm.result5}} !important;" />
+					<input id="Birthday" type="date" class="form-control" ng-model="vm.formBirthday" style="border: 2px solid {{vm.result6}} !important;" /><i style="margin-left:10px" class="fa fa-arrow-left"></i><label style="font-weight: regular;font-size:16px;"> Your birthday</label>
+					<input id="City" type="text" class="form-control addresses" placeholder="City" ng-model="vm.formCity" style="border: 2px solid {{vm.result7}} !important;" />
+					<input id="Country" type="text" class="form-control addresses" placeholder="Country" ng-model="vm.formCountry" style="border: 2px solid {{vm.result8}} !important;" />
+					<button id="sign" class="btn btn-default" type="submit">Sign</button>
+					<div style="float:left">I am registered! <a ng-click="vm.signin()" style="color:DodgerBlue">Sign In</a></div>
+				</form>
+		</div>
+	</div>
+	</div>
+</section>

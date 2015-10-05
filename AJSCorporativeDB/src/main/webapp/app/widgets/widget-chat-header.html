@@ -1,0 +1,10 @@
+<link rel="stylesheet" href="styles/css/dashboard.css">
+
+<div class="widget-head" style="background-color: #555 !important; color:beige !important;">
+    <div class="page-title pull-left" style="color:#555 !important;"><strong class="stroke" ng-show="notification">({{notification}})</strong><strong style="color:beige !important;"> {{title}} </strong></div>
+    <small class="page-title-subtle" ng-show="subtitle">({{subtitle}})</small>
+    <a class="chaticons widget-icons pull-right fa fa-close" ng-click="{{function}}"></a>
+    <a class="chaticons widget-icons pull-right fa fa-minus" data-toggle="collapse" data-target="#{{collapseid}}"></a>
+    <small class="pull-right page-title-subtle" ng-show="rightText">{{rightText}}</small>
+    <div class="clearfix"></div>
+</div>

@@ -1,0 +1,143 @@
+<link rel="stylesheet" href="styles/css/profile.css">
+<section class="mainbar">
+    <section class="matter">
+        <div class="container">
+            <div class="row">
+            	<div class="col-md-1"></div>
+                <div class="col-md-2">
+                    <img ng-src="{{Profile}}" class="profile-image"/>
+                </div>
+                <div class="col-md-8">
+                    <ul class="nav nav-tabs profile-nav">
+						<li id="bioNav" role="presentation" class="active"><a href="" ng-click="vm.showInfo()">Information</a></li>
+						<li id="contactsNav" role="presentation"><a href="" ng-click="vm.showContacts()">Contacts</a></li>
+						<li id="galleryNav" role="presentation"><a href="" ng-click="vm.showGallery()">Gallery</a></li>
+						<li id="configNav" role="presentation"><a href="" ng-click="vm.showConfig()">Configuration</a></li>
+					</ul>
+	                </div>
+	            <div class="row">
+	            <div class="col-md-1"></div>
+	            <div class="col-md-10">
+	            	<div class="container bio-container" ng-show="vm.showBioContainer===true">
+	            		<div class="col-md-4">
+	            			<table class="name-table">
+	            				<tr><th>{{vm.currentuser.name}} {{vm.currentuser.surname}}</th></tr>
+	            			</table>
+	            			<table class="info-table" style="border-top:0">
+	            			<tr><td><i class="fa fa-home"></i> {{vm.profile.city}}</td></tr>
+	            			<tr><td><i class="fa fa-globe"></i> {{vm.profile.country}}</td></tr>
+	            			<tr><td><i class="fa fa-calendar-o"></i> {{vm.profile.birthday | date:'yyyy-MM-dd'}}</td></tr>
+	            			<tr><td><i class="fa fa-at"></i> {{vm.currentuser.email}}</td></tr>
+	            			</table>
+	            		</div>
+	            		<div class="col-md-8">
+	            		<table class="bio-table">
+	            			<tr><th>Biography</th></tr>
+	            			<tr><td>{{vm.profile.biography}}</td></tr>
+	            		</table>
+	            		</div>
+	            	</div>
+	            </div>
+	            </div>
+	            <div class="row">
+	            <div class="col-md-10">
+	            <div class="container gallery-container" ng-show="vm.showContactsContainer===true">
+	            <h3 class="title title-gallery">My Contacts</h3>
+			    <ul class="gallery">
+    				<li ng-repeat="c in vm.contacts" class="contacts-margin"><img ng-src="profile/user/{{c.id}}/image/{{c.image}}" class="contacts-image" /><strong class="contact-name">{{c.name}} {{c.surname}}</strong><i style="color:{{c.fav}}" class="glyphicon glyphicon-star fav-button" ng-click="vm.addFavorite(c)"></i><i class="glyphicon glyphicon-envelope msg-button"></i></li>
+				</ul>
+	            </div>
+	            </div>
+	            </div>
+	            <div class="row">
+	            <div class="col-md-10">
+	            <div class="container gallery-container" ng-show="vm.showGalleryContainer===true">
+			    <!-- Controls for the borderless lightbox -->
+			    <h3 class="title title-gallery"><button class="btn btn-gallery" ng-click="vm.showFileupload()"><i class="fa fa-upload"></i></button> Gallery</h3>
+			    <ul class="gallery">
+    				<li ng-repeat="i in vm.images"><img ng-src="{{i.url}}" class="gallery-image" ng-click="vm.showImage(i)"></li>
+				</ul>
+				</div>
+				</div>
+	            </div>
+	            <div class="row">
+	            <div class="col-md-10">
+	            <div class="container config-container" ng-show="vm.showConfigContainer===true">
+	            <div class="col-md-3" style="padding:0;">
+	            <table id="setting-options" class="table table-condensed">
+	            <tr><td ng-click="vm.setopt(1)"> >> Profile settings</td></tr>
+	            <tr><td ng-click="vm.setopt(2)"> >> User settings</td></tr>
+	            <tr><td ng-click="vm.setopt(3)"> >> Page settings</td></tr>
+	            </table>
+	            </div>
+	            <div class="col-md-9" style="padding-left:0">
+	            <form name="profile" ng-show="vm.settings==1">
+	            <table id="profile-settings" class="table table-condensed">
+	            <tr><th style="border-top:0"><label style="font-weight: regular;font-size:14px;"> Biography</label><i style="margin-left:10px" class="fa fa-arrow-right"></i></th>
+	            <td style="border-top:0"><textarea id="Biography" type="text" class="form-control big" ng-model="vm.formBiography"></textarea></td>
+	            <tr><th><label style="font-weight: regular;font-size:14px;"> Phone Number</label><i style="margin-left:10px" class="fa fa-arrow-right"></i></th>
+	            <td><input id="Phone" type="text" class="form-control" placeholder="Phone" ng-model="vm.formPhone" /></td>
+	            <tr><th><label style="font-weight: regular;font-size:14px;"> Birthday</label><i style="margin-left:10px" class="fa fa-arrow-right"></i></th>
+	            <td><input id="Birthday" type="date" class="form-control" ng-model="vm.formBirthday" /></td>
+				<tr><th><label style="font-weight: regular;font-size:14px;"> City</label><i style="margin-left:10px" class="fa fa-arrow-right"></i></th>
+				<td><input id="City" type="text" class="form-control addresses" placeholder="City" ng-model="vm.formCity" /></td>
+				<tr><th><label style="font-weight: regular;font-size:14px;"> Country</label><i style="margin-left:10px" class="fa fa-arrow-right"></i></th>
+				<td><input id="Country" type="text" class="form-control addresses" placeholder="Country" ng-model="vm.formCountry" /></td>
+				<tr><th></th><td><button id="sign" class="btn btn-default" type="submit">Save</button></td></tr>
+	            </table>
+	            </form>
+	            <form name="user" ng-show="vm.settings==2">
+	            <table id="profile-settings" class="table table-condensed">
+				<tr><th style="border-top:0"><label style="font-weight: regular;font-size:14px;"> Name</label><i style="margin-left:10px" class="fa fa-arrow-right"></i></th>
+	            <td style="border-top:0"><input id="Name" type="text" class="form-control" placeholder="Name" ng-model="vm.formName" /></td>
+	            <tr><th><label style="font-weight: regular;font-size:14px;"> Surname</label><i style="margin-left:10px" class="fa fa-arrow-right"></i></th>
+	            <td><input id="Surname" type="text" class="form-control" placeholder="Surname" ng-model="vm.formSurname" /></td>
+				<tr><th><label style="font-weight: regular;font-size:14px;"> Email</label><i style="margin-left:10px" class="fa fa-arrow-right"></i></th>
+				<td><input id="Email" type="text" class="form-control addresses" placeholder="Email" ng-model="vm.formEmail" /></td>
+				<tr><th><label style="font-weight: regular;font-size:14px;"> Password</label><i style="margin-left:10px" class="fa fa-arrow-right"></i></th>
+				<td><input id="Password" type="password" class="form-control addresses" placeholder="Password" ng-model="vm.formSurname" /></td>
+				<tr><th></th><td><button id="sign" class="btn btn-default" type="submit">Save</button></td></tr>
+	            </table>
+	            </form>
+	            </div>
+	            </div>
+	            </div>
+	            </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+<div id="file-manager" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content style-content">
+      <div class="modal-header style-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title style-title">FILE MANAGER</h4>
+      </div>
+      <div class="modal-body">
+        <div ng-include="'angularjs.html'"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="image-show" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content style-content">
+      <div class="modal-header style-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title style-title">IMAGE <small>{{vm.index+1}}/{{vm.images.length}}</small></h4>
+      </div>
+      <div class="imageM modal-body">
+        <img ng-src="{{vm.imagemodal}}" class="modal-image"/>
+      </div>
+      <div class="options">
+      <button class="glyphicon glyphicon-arrow-left" ng-click="vm.showImagePrev()"></button>
+      <button style="float:left; margin-left:10px;" class="glyphicon glyphicon-user" ng-click="vm.profileimage()"></button>
+      <button class="glyphicon glyphicon-arrow-right" ng-click="vm.showImageNext()"></button>
+      <button type="button" style="float:right; margin-right: 10px;" class="glyphicon glyphicon-trash" ng-click="vm.deleteImage()"></button>
+      </div>
+    </div>
+  </div>
+</div>

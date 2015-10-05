@@ -1,0 +1,133 @@
+<link rel='stylesheet' href="styles/css/calendar.css" />
+<link rel='stylesheet' href="styles/css/fullcalendar.css" />
+<section class="mainbar">
+    <section class="matter">
+     <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="list" id="textfields" style="margin:5px;color: rgb(55,125,181) !important;">
+                <table class="table table-condensed">
+                <a class="fa fa-times pull-right edit" ng-click="vm.close()"></a>
+                <a class="fa fa-pencil pull-right edit" ng-click="vm.edit()"></a>
+                <a class="fa fa-trash pull-left edit" style="color:red;text-shadow:0 0 3px #000" ng-click="vm.del()"></a>
+                <tr style="background-color: white">
+                <td><strong style="color:#555">Title: </strong></td><td>{{vm.event.title}}</td>
+                </tr>
+                </table>
+                <table class="table table-condensed" style="margin-top: 20px;">
+                <tr>
+                <td><strong style="color:#555">Start: </strong></td><td>{{vm.event.start}}</td>
+                </tr><tr>
+                <td><strong style="color:#555">End: </strong></td><td>{{vm.event.end}}</td>
+                </tr>
+                </table>
+                <table class="table table-condensed">
+                <tr><td><strong style="color:#555">All Day: </strong></td><td><i class="{{vm.allday}}"></i></td>
+                </tr>
+                </table>
+                <table class="table table-condensed">
+                <tr><td><strong style="color:#555">Description: </strong></td><td>{{vm.event.description}}</td>
+                </tr>
+                </table>
+				</li>
+                <li class="list" id="formfields" style="display: none;"><form id="commentForm" name="commentForm" ng-submit="vm.modify()">
+                <table class="table table-condensed">
+                 <a class="fa fa-arrow-left pull-left edit" ng-click="vm.back()"></a>
+                 <input type="submit" class="fa fa-save pull-left edit" ng-click="vm-edit()" />
+                 <a class="fa fa-times pull-right edit" ng-click="vm.close()"></a>
+                 <a class="fa fa-trash pull-right edit" style="color:red;text-shadow:0 0 3px #000" ng-click="vm.del()"></a>
+                <tr><td>Title:</td>
+            <td><input type="text" style="border: 1px solid #555 !important;" ng-model="vm.modifyTitle" class="input rounded"/>
+            </table>
+            <table class="table table-condensed">
+            <tr><td>Start:</td>
+            <td><select type="text" style="border: 1px solid #555 !important;" ng-model="vm.modifyStart" class="rounded" id="startselect">
+               <option id="00:00" value="00:00">00:00</option><option id="00:30" value="00:30">00:30</option><option id="01:00" value="01:00">01:00</option>
+              <option id="01:30" value="01:30">01:30</option><option id="02:00" value="02:00">02:00</option><option id="02:30" value="02:30">02:30</option>
+              <option id="03:00" value="03:00">03:00</option><option id="03:30" value="03:30">03:30</option><option id="04:00" value="04:00">04:00</option>
+              <option id="04:30" value="04:30">04:30</option><option id="05:00" value="05:00">05:00</option><option id="05:30" value="05:30">05:30</option>
+              <option id="06:00" value="06:00">06:00</option><option id="06:30" value="06:30">06:30</option><option id="07:00" value="07:00">07:00</option>
+              <option id="07:30" value="07:30">07:30</option>
+              <option id="08:00" value="08:00">08:00</option><option id="08:30" value="08:30">08:30</option><option id="09:00" value="09:00">09:00</option>
+              <option id="09:30" value="09:30">09:30</option><option id="10:00" value="10:00">10:00</option>
+              <option id="10:30" value="10:30">10:30</option><option id="11:00" value="11:00">11:00</option><option id="11:30" value="11:30">11:30</option>
+              <option id="12:00" value="12:00">12:00</option><option id="12:30" value="12:30">12:30</option><option id="13:00" value="13:00">13:00</option>
+              <option id="13:30" value="13:30">13:30</option><option id="14:00" value="14:00">14:00</option><option id="14:30" value="14:30">14:30</option>
+              <option id="15:00" value="15:00">15:00</option><option id="15:30" value="15:30">15:30</option><option id="16:00" value="16:00">16:00</option>
+              <option id="16:30" value="16:30">16:30</option><option id="17:00" value="17:00">17:00</option><option id="17:30" value="17:30">17:30</option>
+              <option id="18:00" value="18:00">18:00</option><option id="18:30" value="18:30">18:30</option><option id="19:00" value="19:00">19:00</option>
+              <option id="19:30" value="19:30">19:30</option><option id="20:00" value="20:00">20:00</option><option id="20:30" value="20:30">20:30</option>
+              <option id="21:00" value="21:00">21:00</option><option id="21:30" value="21:30">21:30</option><option id="22:00" value="22:00">22:00</option>
+              <option id="22:30" value="22:30">22:30</option><option id="23:00" value="23:00">23:00</option><option id="23:30" value="23:30">23:30</option>
+              
+            </select>
+            </td></tr>
+            <tr><td>End:</td>
+            <td><select type="text" style="border: 1px solid #555 !important;" ng-model="vm.modifyEnd" class="rounded" id="endselect">
+              <option id="00:00" value="00:00">00:00</option><option id="00:30" value="00:30">00:30</option><option id="01:00" value="01:00">01:00</option>
+              <option id="01:30" value="01:30">01:30</option><option id="02:00" value="02:00">02:00</option><option id="02:30" value="02:30">02:30</option>
+              <option id="03:00" value="03:00">03:00</option><option id="03:30" value="03:30">03:30</option><option id="04:00" value="04:00">04:00</option>
+              <option id="04:30" value="04:30">04:30</option><option id="05:00" value="05:00">05:00</option><option id="05:30" value="05:30">05:30</option>
+              <option id="06:00" value="06:00">06:00</option><option id="06:30" value="06:30">06:30</option><option id="07:00" value="07:00">07:00</option>
+              <option id="07:30" value="07:30">07:30</option>
+              <option id="08:00" value="08:00">08:00</option><option id="08:30" value="08:30">08:30</option><option id="09:00" value="09:00">09:00</option>
+              <option id="09:30" value="09:30">09:30</option><option id="10:00" value="10:00">10:00</option>
+              <option id="10:30" value="10:30">10:30</option><option id="11:00" value="11:00">11:00</option><option id="11:30" value="11:30">11:30</option>
+              <option id="12:00" value="12:00">12:00</option><option id="12:30" value="12:30">12:30</option><option id="13:00" value="13:00">13:00</option>
+              <option id="13:30" value="13:30">13:30</option><option id="14:00" value="14:00">14:00</option><option id="14:30" value="14:30">14:30</option>
+              <option id="15:00" value="15:00">15:00</option><option id="15:30" value="15:30">15:30</option><option id="16:00" value="16:00">16:00</option>
+              <option id="16:30" value="16:30">16:30</option><option id="17:00" value="17:00">17:00</option><option id="17:30" value="17:30">17:30</option>
+              <option id="18:00" value="18:00">18:00</option><option id="18:30" value="18:30">18:30</option><option id="19:00" value="19:00">19:00</option>
+              <option id="19:30" value="19:30">19:30</option><option id="20:00" value="20:00">20:00</option><option id="20:30" value="20:30">20:30</option>
+              <option id="21:00" value="21:00">21:00</option><option id="21:30" value="21:30">21:30</option><option id="22:00" value="22:00">22:00</option>
+              <option id="22:30" value="22:30">22:30</option><option id="23:00" value="23:00">23:00</option><option id="23:30" value="23:30">23:30</option>
+            </select>
+            </td></tr>
+            </table>
+            <table class="table table-condensed">
+            <tr><td>All Day:</td>
+            <td><input type="checkbox" ng-model="vm.modifyAllDay" value="vm.showAllDay" class="rounded"/>
+            </td></tr>
+            </table>
+            <table class="table table-condensed">
+            <tr><td>Description:</td>
+            <td><textarea type="text" style="border: 1px solid #555 !important;" ng-model="vm.modifyDescription" class="textarea rounded"/>
+            </td></tr>
+            </table>
+                </form></li>
+            </ul>
+        </div>	
+        <div class="container">
+            <div class="row">
+                <div id="calendar" style="background-color: Beige;"></div>
+            </div>
+        </div>
+        </div>
+    </section>
+</section>
+
+
+<div id="addEventmodal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content" style="background-color:rgb(245,245,245) !important">
+            <div class="modal-header mheader">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" style="color:#555;font-weight:bold;"><i class="fa fa-plus"></i> New event</h4>
+            </div>
+            <form name="commentForm" ng-submit="vm.addevent()">
+            <div class="modal-body mbody" style="background-color:white !important">
+            <fieldset class="form-group">
+            <div class="input-group" style="margin-left:50px;">
+            <span class="input-group-addon" style="background-color:Tomato;color:white;border: 1px solid #555;font-weigt:bold;" id="basic-addon1">Title: </span>
+            <input id="modifytitle" type="text" style="border: 1px solid #555 !important;" ng-model="vm.newtitle" class="form-control" aria-describedby="basic-addon1"/>
+            </div>
+            </fieldset>
+            </div>
+            <div class="modal-footer mfoot">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button id="submitmodifyevent" type="submit" style="background-color:Tomato;color:white;" class="btn btncool">Modify</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div> 

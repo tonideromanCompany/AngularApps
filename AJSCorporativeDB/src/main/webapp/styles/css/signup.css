@@ -1,0 +1,74 @@
+@font-face
+{
+   font-family: "Roboto-Light";
+   src: url("fonts/Roboto-Light.ttf");
+}
+
+@font-face
+{
+   font-family: "Roboto-Regular";
+   src: url("fonts/Roboto-Regular.ttf");
+}
+
+@font-face
+{
+   font-family: "Roboto-Black";
+   src: url("fonts/Roboto-Black.ttf");
+}
+
+.signup-panel {
+	background-color: rgba(0,0,0,0.1);
+	border: 1px solid #555;
+	box-shadow: 0 0 3px #000;
+	border-radius: 10px !important;
+	margin-top: 10%;
+	height: 100%;
+}
+
+.signup-panel input {
+	border: 2px solid #555 !important;
+	border-radius: 10px !important;
+	font-family: "Roboto-Regular";
+	margin-bottom: 15px;
+	font-size: 16px !important;
+}
+
+.signup-header {
+	border-radius: 10px 10px 0 0;
+	border-bottom: 3px solid #555 !important;
+	background-color: #555 !important;
+	color: #fff !important;
+	font-family: "Roboto-Black";
+	font-size: 20px;
+	text-align: center;
+}
+
+.txt-input {
+	width: 400px !important;
+}
+
+.signup-panel placeholder {
+	font-family: "Roboto-Light";
+}
+
+.addresses {
+	width: 195px !important;
+}
+
+.form-group label {
+	font-size: 16px;
+}
+
+#sign{
+	width: 25%;
+	border-radius: 20px !important;
+	font-size: 18px !important;
+	font-family: "Roboto-Regular";
+	background-color: #555;
+	color: white;
+	margin-left: 37.5%;
+}
+
+#sign:hover {
+	opacity: 0.7;
+}
